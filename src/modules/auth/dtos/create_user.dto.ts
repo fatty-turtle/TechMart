@@ -10,7 +10,7 @@ import { Match } from '@/common/decorators/match.decorator';
 
 export class CreateUserDto {
   @ApiProperty({
-    example: 'john@example.com',
+    example: 'admin@example.com',
     description: 'User email address',
   })
   @IsNotEmpty({ message: 'Email is required' })
@@ -30,7 +30,7 @@ export class CreateUserDto {
   username!: string;
 
   @ApiProperty({
-    example: 'Password123!',
+    example: 'Admin123!',
     description: 'User password (6-100 characters)',
     minLength: 6,
     maxLength: 100,
@@ -43,10 +43,18 @@ export class CreateUserDto {
 
   @ApiProperty({
     example: 'Password123!',
-    description: 'Must match the password field',
+    description: 'Must match the password field (6-100 characters)',
+    minLength: 6,
+    maxLength: 100,
   })
-  @IsNotEmpty({ message: 'Password is required' })
+  @IsNotEmpty({ message: 'Password confirmation is required' })
   @IsString()
+  @MinLength(6, {
+    message: 'Password confirmation must be at least 6 characters long',
+  })
+  @MaxLength(100, {
+    message: 'Password confirmation cannot exceed 100 characters',
+  })
   @Match('password', { message: 'Passwords do not match' })
   confirmPassword!: string;
 }

@@ -5,11 +5,11 @@ export * from './auth/address.repository';
 export * from './cart/cart-item.repository';
 export * from './cart/cart.repository';
 
-export * from './catalog/brand.repository';
-export * from './catalog/category.repository';
-export * from './catalog/product-image.repository';
-export * from './catalog/product-variant.repository';
-export * from './catalog/product.repository';
+export * from './product/brand.repository';
+export * from './product/category.repository';
+export * from './product/product-image.repository';
+export * from './product/product-variant.repository';
+export * from './product/product.repository';
 
 export * from './coupon/coupon.repository';
 

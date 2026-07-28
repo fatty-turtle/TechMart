@@ -1,4 +1,4 @@
-export default function checkAvailable<T>(
+export function checkAvailable<T>(
   variable: T | null | undefined,
   name = 'variable',
 ): T {

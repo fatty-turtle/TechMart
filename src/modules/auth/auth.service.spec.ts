@@ -1,15 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
+import {
+  UserRepository,
+  RefreshTokenRepository,
+} from '../../database/repositories';
+import { JwtService } from '@nestjs/jwt';
+import { createTestingModule, getService } from '@/test/test-utils';
 
 describe('AuthService', () => {
   let service: AuthService;
+  let module: TestingModule;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthService],
-    }).compile();
+    module = await createTestingModule(
+      [], 
+      [AuthService, UserRepository, RefreshTokenRepository, JwtService],
+    );
 
-    service = module.get<AuthService>(AuthService);
+    service = getService(module, AuthService);
   });
 
   it('should be defined', () => {

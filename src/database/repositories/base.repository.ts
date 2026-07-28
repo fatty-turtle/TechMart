@@ -48,13 +48,18 @@ export class BaseRepository<
     return await this.repository.findMany({ where: filters });
   }
 
-  async findMany(params: {
+  async findMany({
+    skip = 0,
+    take = 10,
+    where = {},
+    orderBy = {},
+  }: {
     skip?: number;
     take?: number;
     where?: object;
     orderBy?: object;
-  }): Promise<T[]> {
-    return await this.repository.findMany(params);
+  } = {}): Promise<T[]> {
+    return await this.repository.findMany({ skip, take, where, orderBy });
   }
 
   async findUnique(where: object): Promise<T | null> {

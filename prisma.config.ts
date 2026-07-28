@@ -2,7 +2,7 @@
 // npm install --save-dev prisma dotenv
 import 'dotenv/config';
 import { defineConfig } from 'prisma/config';
-import checkAvailable from './src/utils/checkAvailable';
+import { checkAvailable } from './src/utils/checkAvailable';
 
 export default defineConfig({
   schema: './src/database/prisma/schema.prisma',
